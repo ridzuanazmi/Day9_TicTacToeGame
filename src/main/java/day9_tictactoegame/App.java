@@ -8,7 +8,7 @@ import java.util.Scanner;
 public final class App {
     private App() {
     }
-    // initializes the 3x3 tic tac toe board
+    // initializes the 3x3 tic tac toe board with a 2d char variable
     static char[][] board = new char[3][3];
     // initialize the scanner class
     static Scanner sc = new Scanner(System.in);
@@ -29,8 +29,9 @@ public final class App {
 
     public static void play() {
         boolean playing = true;
+
         while (playing) {
-            System.out.println("");
+            
             System.out.println("Current board layout:");
             printBoard();
             System.out.println("");
@@ -39,9 +40,11 @@ public final class App {
             int row = sc.nextInt() - 1;
             int col = sc.nextInt() - 1;
             System.out.println("");
+
             if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ') {
                 board[row][col] = player;
                 if (checkWin()) {
+                    printBoard();
                     System.out.println("Player " + player + " wins!");
                     playing = false;
                 } else if (checkTie()) {
@@ -54,7 +57,7 @@ public final class App {
                 System.out.println("Invalid move, try again.");
             }
         }
-    }
+    } // end of play method
 
     public static boolean checkWin() {
         // check rows
@@ -77,7 +80,7 @@ public final class App {
             return true;
         }
         return false;
-    }
+    } // end of checkWin method
 
     public static boolean checkTie() {
         for (int i = 0; i < 3; i++) {
@@ -88,7 +91,7 @@ public final class App {
             }
         }
         return true;
-    }
+    } // end of checkTie method
 
     public static void printBoard() {
         for (int i = 0; i < 3; i++) {
@@ -97,6 +100,6 @@ public final class App {
                 System.out.println("---+---+---");
             }
         }
-    }
+    } // end of printBoard method
 
 }
